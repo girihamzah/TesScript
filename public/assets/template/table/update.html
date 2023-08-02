@@ -1,0 +1,89 @@
+@extends('Layouts.app')
+@section('content')
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                    <h6>Edit Siswa</h6>
+                </div>
+                <div class="cardy-body">
+                    <div class="basic-form">
+                        <form action="{{route('siswa.update', $siswa->id)}}" method="POST" enctype="multipart/form-data">
+                            @method('PUT')
+                            @csrf
+                            <div style="display: flex; padding-left: 25px; padding-right: 25px; gap: 15px">
+                                <div class="form-group" style=" width: 50%">
+                                    <label for="">
+                                        Nama
+                                    </label>
+                                    <input type="string" placeholder="nama" name="nama" value="{{$siswa->nama}}" class=" p-2" style="border-radius: 5px; width: 100%; border-color: darkgray; font-size: 12px">
+                                </div>
+                                <div class="form-group" style=" width: 50%">
+                                    <label for="">
+                                        Nisn
+                                    </label>
+                                    <input type="string" placeholder="nisn" name="nisn" value="{{$siswa->nisn}}" class=" p-2" style="border-radius: 5px; width: 100%; border-color: darkgray; font-size: 12px">
+                                </div>
+                            </div>
+                            <div style="display: flex; padding-left: 25px; padding-right: 25px; gap: 15px">
+                                <div class="form-group" style=" width: 50%">
+                                    <label for="">
+                                        Telpon
+                                    </label>
+                                    <input type="telp" placeholder="telpon" name="no_telp" value="{{$siswa->no_telp}}" class=" p-2" style="border-radius: 5px; width: 100%; border-color: darkgray; font-size: 12px">
+                                </div>
+                                <div class="form-group" style=" width: 50%">
+                                    <label for="">
+                                        Nis
+                                    </label>
+                                    <input type="string" placeholder="nis" name="nis" value="{{$siswa->nis}}" class=" p-2" style="border-radius: 5px; width: 100%; border-color: darkgray; font-size: 12px">
+                                </div>
+                            </div>
+                            <div style="display: flex; padding-left: 25px; padding-right: 25px;">
+                                <div class="form-group" style=" width: 100%">
+                                    <label for="">
+                                        Alamat
+                                    </label>
+                                    <input type="telp" placeholder="alamat" name="alamat" value="{{$siswa->alamat}}" class=" p-2" style="border-radius: 5px; width: 100%; border-color: darkgray; font-size: 12px">
+                                </div>
+                            </div>
+                            <div style="display: flex; padding-left: 25px; padding-right: 25px; gap: 15px">
+                                <div class="form-group" style=" width: 50%">
+                                    <label for="">
+                                        Kelas
+                                    </label>
+                                    <select id="inputState" class="form-control" name="id_kelas">
+                                        <option selected>Pilih Kelas</option>
+                                        @foreach ($kelas as $item)
+                                            <option value="{{$item->id}}">{{ $item->nama_kelas }}</option>
+                                        @endforeach
+                                    </select>
+
+                                </div>
+                                <div class="form-group" style=" width: 50%">
+                                    <label for="">
+                                        Spp
+                                    </label>
+                                    <select id="inputState" class="form-control" name="id_spp">
+                                        <option selected>Pilih SPP</option>
+                                        @foreach ($spp as $item)
+                                            <option value="{{$item->id}}">{{ $item->tahun }}</option>
+                                        @endforeach
+                                    </select>
+                                    {{--  <input type="string" placeholder="spp" class=" p-2" style="border-radius: 5px; width: 100%; border-color: darkgray; font-size: 12px">  --}}
+                                </div>
+                            </div>
+                            <div style="display: flex; justify-content: end; padding-right: 25px">
+                                <button type="submit" class="btn btn-warning">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@endsection
